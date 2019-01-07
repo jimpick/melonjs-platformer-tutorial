@@ -27,8 +27,11 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
-        // me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+
+        // set a global fading transition for the screen
+        me.state.transition("fade", "#FFFFFF", 250);
 
         // add our player entity in the entity pool
         me.pool.register("mainPlayer", game.PlayerEntity);
@@ -44,6 +47,6 @@ var game = {
         me.input.bindKey(me.input.KEY.SPACE,  "jump", true);
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        me.state.change(me.state.MENU);
     }
 };
